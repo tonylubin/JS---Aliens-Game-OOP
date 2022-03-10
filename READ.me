@@ -1,0 +1,25 @@
+HOSTILE ALIENS CHALLENGE
+
+We were tasked with creating a simple text game, with minimal styling, based on the classic space invaders game.
+It was to incorporate the principles of OOP programming paradigm and built using JAVASCRIPT.
+
+The rules of the game are:
+(a) press a button that selects a random ship that is hit (get a random number each time)
+(b) for each hit points are reduced for that ship and a visible counter is shown for the "hit points"
+(c) game is won when all ships are destroyed or when "mother ship" is destroyed
+(d) when ships points are zero it cannot be hit again
+
+Designed the game based on the "battleships" grid system.
+Using a css grid system, placed ships on "game board" represented as 1 grid per hit points divided by total points of ship
+e.g: defence ship = 80 points, hit points = 10 --> defence ship = 8 grids
+
+Utilised JS Classes, Objects and Methods to instantiate the "gameboard" HTML and create the "ships"
+
+A simple colour code scheme was used to identify the different ships and the 3 text counters that were created at bottom of page,
+which showed which exact ship was hit and the points total (changed and updated for each indivdual ship hit)
+
+Used a remove classlist method to remove ships colour grid when hit ---> game won ships removed from grid
+Made a win condtion check if mother ship is destroyed first.
+A "JS switch case" was utilised to check for grid reference and perform the function of updating text, score and removing class.
+
+A start/restart function was built without the need for refreshing the browser
