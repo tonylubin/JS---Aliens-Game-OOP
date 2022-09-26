@@ -1,27 +1,30 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hostile Aliens</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="dist/styles.css" />
+  </head>
+  <body>
     <header class="animate__flash">ALIEN BATTLESHIPS</header>
     <main class="game-board">
-        <section class="enemy-section"></section>
-        <section class="points-info">
-            <P>"Save planet Earth from the invading alien army....Good luck soldier"</P>
-        </section>
-        <section class="player-section">
-            <div class="mother-box"><span class="points-mother"></span></div>
-            <div class="defence-box"><span class="points-defence"></span></div>
-            <div class="attack-box"><span class="points-attack"></span></div>
-        </section>
+      <section class="enemy-section"></section>
+      <section class="points-info">
+        <img id="space-rocket" src="./images/spacecraft.png" alt="spacecraft" />
+        <p>
+          "Save planet Earth from the invading alien army....Good luck soldier"
+        </p>
+      </section>
+      <section class="player-section">
+        <div class="mother-box"><span class="points-mother"></span></div>
+        <div class="defence-box"><span class="points-defence"></span></div>
+        <div class="attack-box"><span class="points-attack"></span></div>
+      </section>
     </main>
     <button id="start">START/RESTART</button>
     <button id="shoot">SHOOT</button>
 
     <script src="./script.js"></script>
-</body>
+  </body>
 </html>

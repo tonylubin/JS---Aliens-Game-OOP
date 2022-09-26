@@ -1,7 +1,9 @@
+// DOM elements
 const enemySection = document.querySelector(".enemy-section");
 const motherShipPoints = document.querySelector(".mother-box");
 const defencePoints = document.querySelector(".defence-box");
 const attackPoints = document.querySelector(".attack-box");
+const spaceshipDomId = document.querySelector('#space-rocket');
 
 class Game {
   constructor(numberOfGridSquares, domPlacement) {
@@ -14,7 +16,7 @@ class Game {
     }
   }
   winCheck(){
-    if(motherShip.points < 0){
+    if(motherShip.points == 0){
         this.getGameboardNodeList().forEach(gridItem => gridItem.style.backgroundColor = "unset");
         alert("Well done soldier! Earth is saved....you've destroyed the alien army!!!");
   }
@@ -22,10 +24,9 @@ class Game {
   getGameboardNodeList() {
     return this.domPlacement.childNodes; // nodelist of game-board children (the ships)
   }
-  updateGameStatus(index, className){
+  updateGameStatus(index){
+    this.getGameboardNodeList()[index].style.backgroundImage = "url('./images/explosion.png')";
     this.getGameboardNodeList()[index].classList.add("blink-2");
-    //this.getGameboardNodeList()[index].classList.remove(className);
-    //this.getGameboardNodeList()[index].style.backgroundColor = "unset";
   }
 }
 
@@ -49,7 +50,7 @@ class Ship {
     positionShip() {
         const calculateDivStartAndEnd = this.divStartPosition + (this.length - 1);
         for (let i = this.divStartPosition; i <= calculateDivStartAndEnd; i++) {
-            document.querySelector(`#grid${i}`).style.backgroundColor = this.color;
+            document.querySelector(`#grid${i}`).style.backgroundImage = this.color;
             document.querySelector(`#grid${i}`).className = this.name;
         }
     }
@@ -57,36 +58,42 @@ class Ship {
 
 //  Instance of Game
 const hostileAlienGame = new Game(270, enemySection);
+
+const motherImgUrl = "url('./images/spaceship.png')";
+const attackImgUrl = "url('./images/rocket.png')";
+const defenceImgUrl = "url('./images/spaceship2.png')";
+
 // Instance of Ships
-const defenceShip1 = new Ship("defence-ship1", "rgb(22, 22, 180)", 80, 80, 10, 8, 61);
-const motherShip = new Ship("mother-ship", "rgb(184, 16, 16)", 100, 100, 9, 12, 9);
-const defenceShip2 = new Ship("defence-ship2", "rgb(22, 22, 180)", 80, 80, 10, 8, 71);
-const defenceShip3 = new Ship("defence-ship3", "rgb(22, 22, 180)", 80, 80, 10, 8, 81);
-const defenceShip4 = new Ship("defence-ship4", "rgb(22, 22, 180)", 80, 80, 10, 8, 126);
-const defenceShip5 = new Ship("defence-ship5", "rgb(22, 22, 180)", 80, 80, 10, 8, 136);
-const attackShip1 = new Ship("attack-ship1", "rgb(201, 201, 15)", 45, 45, 12, 4, 181);
-const attackShip2 = new Ship("attack-ship2", "rgb(201, 201, 15)", 45, 45, 12, 4, 187);
-const attackShip3 = new Ship("attack-ship3", "rgb(201, 201, 15)", 45, 45, 12, 4, 193);
-const attackShip4 = new Ship("attack-ship4", "rgb(201, 201, 15)", 45, 45, 12, 4, 199);
-const attackShip5 = new Ship("attack-ship5", "rgb(201, 201, 15)", 45, 45, 12, 4, 205);
-const attackShip6 = new Ship("attack-ship6", "rgb(201, 201, 15)", 45, 45, 12, 4, 245);
-const attackShip7 = new Ship("attack-ship7", "rgb(201, 201, 15)", 45, 45, 12, 4, 254);
-const attackShip8 = new Ship("attack-ship8", "rgb(201, 201, 15)", 45, 45, 12, 4, 263);
+const motherShip = new Ship("mother-ship", motherImgUrl, 180, 180, 15, 12, 9);
+const defenceShip2 = new Ship("defence-ship2", defenceImgUrl, 80, 80, 10, 8, 71);
+const defenceShip3 = new Ship("defence-ship3", defenceImgUrl, 80, 80, 10, 8, 81);
+const defenceShip1 = new Ship("defence-ship1", defenceImgUrl, 80, 80, 10, 8, 61);
+const defenceShip4 = new Ship("defence-ship4", defenceImgUrl, 80, 80, 10, 8, 126);
+const defenceShip5 = new Ship("defence-ship5", defenceImgUrl, 80, 80, 10, 8, 136);
+const attackShip1 = new Ship("attack-ship1", attackImgUrl, 48, 48, 12, 4, 181);
+const attackShip2 = new Ship("attack-ship2", attackImgUrl, 48, 48, 12, 4, 187);
+const attackShip3 = new Ship("attack-ship3", attackImgUrl, 48, 48, 12, 4, 193);
+const attackShip4 = new Ship("attack-ship4", attackImgUrl, 48, 48, 12, 4, 199);
+const attackShip5 = new Ship("attack-ship5", attackImgUrl, 48, 48, 12, 4, 205);
+const attackShip6 = new Ship("attack-ship6", attackImgUrl, 48, 48, 12, 4, 248);
+const attackShip7 = new Ship("attack-ship7", attackImgUrl, 48, 48, 12, 4, 254);
+const attackShip8 = new Ship("attack-ship8", attackImgUrl, 48, 48, 12, 4, 263);
 const shipsArray = [motherShip, defenceShip1, defenceShip2, defenceShip3, defenceShip4, defenceShip5, attackShip1, attackShip2, attackShip3, attackShip4, attackShip5, attackShip6, attackShip7, attackShip8];
 
 // Initial start/restart
 document.querySelector("#start").addEventListener("click", () => {
     shipsArray.forEach(ship => ship.pointsReset());
-    motherShipPoints.innerHTML = "Mother Ship: ";
-    defencePoints.innerHTML = "Defence Ship: ";
-    attackPoints.innerHTML = "Attack Ship: ";
+    motherShipPoints.innerText = "Mother Ship: ";
+    defencePoints.innerText = "Defence Ship: ";
+    attackPoints.innerText = "Attack Ship: ";
     // Placing ships on grid/board
     shipsArray.forEach(ship => ship.positionShip());
+    spaceshipDomId.style.visibility = "visible";
 });
 
 // SHOOTING --> Picking randon number of grid
 document.querySelector("#shoot").addEventListener("click", () => {
-  let getRandomGridNumber = Math.floor(Math.random() * 270);
+  let getRandomGridNumber = Math.floor(Math.random() * (267 - 8 + 1)) + 8;
   const hostileAlienGameNodeList = hostileAlienGame.getGameboardNodeList();
   if (hostileAlienGameNodeList[getRandomGridNumber].classList.length === 1) {
     let conditionCheck = hostileAlienGameNodeList[getRandomGridNumber].className;

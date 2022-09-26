@@ -87,7 +87,13 @@ function () {
         document.querySelector("#grid".concat(i)).style.backgroundColor = this.color;
         document.querySelector("#grid".concat(i)).className = this.name;
       }
-    }
+    } // shipContainer() {
+    //   let element = document.createElement("div");
+    //   element.classList.add(`.${this.name}_container`);
+    //   let parentRef = enemySection;
+    //   parentRef.appendChild(element);
+    // }
+
   }]);
 
   return Ship;
@@ -96,8 +102,8 @@ function () {
 
 var hostileAlienGame = new Game(270, enemySection); // Instance of Ships
 
-var defenceShip1 = new Ship("defence-ship1", "rgb(22, 22, 180)", 80, 80, 10, 8, 61);
 var motherShip = new Ship("mother-ship", "rgb(184, 16, 16)", 100, 100, 9, 12, 9);
+var defenceShip1 = new Ship("defence-ship1", "rgb(22, 22, 180)", 80, 80, 10, 8, 61);
 var defenceShip2 = new Ship("defence-ship2", "rgb(22, 22, 180)", 80, 80, 10, 8, 71);
 var defenceShip3 = new Ship("defence-ship3", "rgb(22, 22, 180)", 80, 80, 10, 8, 81);
 var defenceShip4 = new Ship("defence-ship4", "rgb(22, 22, 180)", 80, 80, 10, 8, 126);
@@ -116,13 +122,14 @@ document.querySelector("#start").addEventListener("click", function () {
   shipsArray.forEach(function (ship) {
     return ship.pointsReset();
   });
-  motherShipPoints.innerHTML = "Mother Ship: ";
-  defencePoints.innerHTML = "Defence Ship: ";
-  attackPoints.innerHTML = "Attack Ship: "; // Placing ships on grid/board
+  motherShipPoints.innerText = "Mother Ship: ";
+  defencePoints.innerText = "Defence Ship: ";
+  attackPoints.innerText = "Attack Ship: "; // Placing ships on grid/board
 
   shipsArray.forEach(function (ship) {
     return ship.positionShip();
-  });
+  }); // Adding ship container div
+  // shipsArray.forEach(ship => ship.shipContainer());
 }); // SHOOTING --> Picking randon number of grid
 
 document.querySelector("#shoot").addEventListener("click", function () {
