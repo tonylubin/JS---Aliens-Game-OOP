@@ -21,7 +21,7 @@ header {
   height: 10vh;
   width: 100vw;
   text-align: center;
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   color: rgb(52, 179, 52);
 }
 
@@ -63,14 +63,14 @@ header {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 .points-info > img {
   height: 3.5rem;
 }
 
 .player-section > div {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 #space-rocket {
